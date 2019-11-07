@@ -28,7 +28,7 @@ class JwtAuthenticationProcessFilter(
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse): Authentication {
         val prefix = config.getHeaderPrefix()
         val header = request.getHeader(config.getHeaderParamKey()) ?: prefix
-        val token = if (header.length < prefix.length) {
+        val token = if (header.length <= prefix.length) {
             throw SessionAuthenticationException("token($header) is too short.")
         } else {
             header.substring(prefix.length)
