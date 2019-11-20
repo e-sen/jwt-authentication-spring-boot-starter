@@ -23,7 +23,7 @@ class JwtAuthenticationSecurityConfig(
 
         filter.setAuthenticationManager(authenticationManager())
 
-        http.csrf().disable()
+        http.cors().and().csrf().disable()
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
